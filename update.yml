@@ -1,0 +1,49 @@
+name: Update RSS Feed with Local RSS-Bridge
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start RSS-Bridge locally
+        run: |
+          docker run -d --name rss-bridge -p 3000:80 rssbridge/rss-bridge
+
+      - name: Wait for RSS-Bridge to be ready
+        run: |
+          echo "Waiting for RSS-Bridge..."
+          for i in {1..10}; do
+            if curl -s http://localhost:3000/ | grep -q 'RSS-Bridge'; then
+              echo "RSS-Bridge is up!"
+              break
+            fi
+            sleep 3
+          done
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Generate feeds
+        run: |
+          deno run -A https://raw.githubusercontent.com/flatfeeds/flatfeeds/main/flatfeeds.ts
+
+      - name: Stop RSS-Bridge
+        run: |
+          docker stop rss-bridge
+          docker rm rss-bridge
+
+      - name: Commit and push changes
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add output/
+          git commit -m "Update aggregated feeds" || echo "No changes to commit"
+          git push

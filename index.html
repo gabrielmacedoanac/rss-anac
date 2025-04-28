@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed Oficial - ANAC</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #f8f9fa; }
+    h1 { color: #003366; }
+    .card { background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .footer { margin-top: 2rem; font-size: 0.9rem; color: #666; }
+  </style>
+</head>
+<body>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Ag%C3%AAncia_Nacional_de_Avia%C3%A7%C3%A3o_Civil_%28ANAC%29_logo.png" alt="ANAC" style="max-width:200px;">
+  <h1>Agregador de Notícias da ANAC</h1>
+
+  <div class="card">
+    <h2><a href="feed.json">Feed JSON</a></h2>
+    <p>Formato leve para integrações automáticas.</p>
+  </div>
+
+  <div class="card">
+    <h2><a href="rss.xml">Feed RSS</a></h2>
+    <p>Ideal para leitores de notícias.</p>
+  </div>
+
+  <div class="card">
+    <h2><a href="atom.xml">Feed ATOM</a></h2>
+    <p>Formato alternativo de distribuição.</p>
+  </div>
+
+  <div class="footer">
+    Desenvolvido com FlatFeeds | Atualizado automaticamente via GitHub Actions
+  </div>
+</body>
+</html>

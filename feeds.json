@@ -1,0 +1,5 @@
+[
+  "https://www.youtube.com/feeds/videos.xml?channel_id=UCd5vL2_SfIhfCpWs3wBzsew",
+  "http://localhost:3000/?action=display&bridge=LinkedInCompany&u=oficial-anac&format=Atom",
+  "http://localhost:3000/?action=display&bridge=Instagram&u=oficialanacbr&format=Atom"
+]

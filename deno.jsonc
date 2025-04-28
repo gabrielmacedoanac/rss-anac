@@ -1,0 +1,5 @@
+{
+  "tasks": {
+    "start": "deno run -A https://raw.githubusercontent.com/flatfeeds/flatfeeds/main/flatfeeds.ts"
+  }
+}
