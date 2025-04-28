@@ -33,7 +33,7 @@ jobs:
 
       - name: Generate feeds
         run: |
-          deno run -A https://raw.githubusercontent.com/flatfeeds/flatfeeds/main/flatfeeds.ts
+          deno run -A flatfeeds.ts
 
       - name: Stop RSS-Bridge
         run: |
